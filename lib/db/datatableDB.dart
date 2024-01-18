@@ -8,8 +8,8 @@ class datatableDB {
    Future<void> createTables(Database database) async {
     await database.execute("""CREATE TABLE IF NOT EXISTS $tableName(
       "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-      "suppliyerId" TEXT NOT NULL,
-      "areaname" TEXT NOT NULL,
+      "name" TEXT NOT NULL,
+      "prenom" TEXT NOT NULL,
       "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
       "updated_at" INTEGER NOT NULL
       );""");
@@ -19,7 +19,7 @@ class datatableDB {
   Future<int> create({required String title}) async {
     final database = await DatabaseService().database;
     return await database.rawInsert(
-        '''INSERT INTO $tableName (areaname, created_at) VALUES (?,?) ''',
+        '''INSERT INTO $tableName (name, prenom, created_at) VALUES (?,?,?) ''',
         [title, DateTime.now().millisecondsSinceEpoch],
     );
   }
@@ -43,11 +43,12 @@ class datatableDB {
   }
 
   //Update
-  Future<int> update({required int id, String? areaname}) async {
+  Future<int> update({required int id, String? name, String? prenom}) async {
     final database = await DatabaseService().database;
     return await database.update(
       tableName,{
-        if(areaname != null) 'areaname': areaname,
+        if(name != null) 'name': name,
+        if(prenom != null) 'prenom': prenom,
         'updated_at' : DateTime.now().millisecondsSinceEpoch,
       },
       

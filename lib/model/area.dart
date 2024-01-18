@@ -1,14 +1,14 @@
 class Area{
   int id;
-  int suppliyerId;
-  String areaname;
+  int name;
+  String prenom;
   String createdAt;
   String updatedAt;
 
   Area({
     required this.id,
-    required this.suppliyerId,
-    required this.areaname,
+    required this.name,
+    required this.prenom,
     required this.createdAt,
     required this.updatedAt
   });
@@ -18,8 +18,8 @@ class Area{
   Map<String, dynamic> toSqfliteDatabase() {
     return {
       'id': id,
-      'suppliyerId': suppliyerId,
-      'areaname': areaname,
+      'name': name,
+      'prenom': prenom,
       'created_at': createdAt,
       'updated_at': updatedAt,
     };
@@ -29,23 +29,23 @@ class Area{
   factory Area.fromSqfliteDatabase(Map<String, dynamic> data) {
     return Area(
       id: data['id'],
-      suppliyerId: data['suppliyerId'],
-      areaname: data['areaname'],
+      name: data['name'],
+      prenom: data['prenom'],
       createdAt: data['created_at'],
       updatedAt: data['updated_at'],
     );
   }
   // factory Area.fromJson(Map<String, dynamic> json) => Area(
   //   id: json['id'],
-  //   suppliyerId: json['suppliyerId'],
-  //   areaname: json['areaname'],
+  //   name: json['name'],
+  //   prenom: json['prenom'],
   //   createdAt: json['createdAt'],
   //   updatedAt: json['updatedAt'],
   // );
   // Map<String, dynamic> toJson() => {
   //   "id" : id,
-  //   "suppliyerId" : suppliyerId,
-  //   "areaname" : areaname,
+  //   "name" : name,
+  //   "prenom" : prenom,
   //   "createdAt" : createdAt,
   //   "updatedAt" : updatedAt,
   // };

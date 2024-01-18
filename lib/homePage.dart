@@ -38,18 +38,19 @@ class _HomePageState extends State<HomePage> {
   }
   
   Widget buildDataTable() {
-    final columns = ['Flag', "name", 'Native Name'];
-
+    widget: 
     return Container(
       child: DataTable(
         columns: [
           DataColumn(label: Text('ID')),
-          DataColumn(label: Text('Name')),
+          DataColumn(label: Text('Nom')),
+          DataColumn(label: Text('Prenom')),
           DataColumn(label: Text('Action')),
         ],
         rows: areaList.map<DataRow>((element) => DataRow(cells: [
           DataCell(Text(element.id.toString())),
-          DataCell(Text(element.areaname.toString())),
+          DataCell(Text(element.name.toString())),
+          DataCell(Text(element.prenom.toString())),
           DataCell(Icon(Icons.edit)),
         ])).toList(),
       ),
